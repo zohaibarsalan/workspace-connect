@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Connect Google Drive and Docs to Codex and Claude Code through one shared local MCP setup. Open source, with your own Google account."
+    />
+    <meta name="theme-color" content="#f7f6f2" />
+    <title>Workspace Connect — Google Docs for your coding agents</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header>
+      <div class="wrap">
+        <a class="brand" href="./"
+          ><span class="mark" aria-hidden="true"></span>Workspace Connect</a
+        >
+        <nav aria-label="Main navigation">
+          <a href="#setup">Setup</a
+          ><a class="optional" href="privacy.html">Privacy</a
+          ><a href="https://github.com/zohaibarsalan/workspace-connect"
+            >GitHub ↗</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Google Workspace · Local MCP</div>
+          <h1>Your documents.<br /><span>Your coding agents.</span></h1>
+          <p class="lede">
+            Give Codex and Claude Code a way to work in Google Drive and Docs.
+            One local setup. One shared Google login. Your own account.
+          </p>
+          <div class="actions">
+            <a class="button" href="#setup"
+              >Connect your workspace <span aria-hidden="true">↗</span></a
+            ><a href="https://github.com/zohaibarsalan/workspace-connect"
+              >View source</a
+            >
+          </div>
+        </div>
+        <div class="terminal" aria-label="Example connector commands">
+          <div class="terminal-head">
+            <span>workspace-connect</span><span>LOCAL / STDIO</span>
+          </div>
+          <div class="terminal-body">
+            <p>
+              <span class="dim"># Connect both coding agents</span><br />$ node
+              dist/cli.js install --client both<br /><span class="green"
+                >Registered. Start fresh agent sessions.</span
+              >
+            </p>
+            <p>
+              <span class="dim"># Check your connection</span><br />$ node
+              dist/cli.js doctor --email you@example.com<br /><span
+                class="green"
+                >Authenticated Drive access passed.</span
+              >
+            </p>
+            <p>
+              <span class="dim"># Then ask your agent</span><br />“Find the
+              project brief and update the intro.”
+            </p>
+          </div>
+          <div class="terminal-foot">
+            ILLUSTRATIVE SESSION · GOOGLE AUTH RUNS ON YOUR COMPUTER
+          </div>
+        </div>
+      </section>
+      <div class="strip">
+        <strong>Built for Codex + Claude Code</strong
+        ><span>Drive &amp; Docs only</span><span>Your OAuth client</span
+        ><span>MIT licensed</span>
+      </div>
+      <section class="section" aria-labelledby="work-title">
+        <div class="section-title">
+          <div>
+            <div class="label">01 / The connection</div>
+            <h2>From a coding session<br />to a working document.</h2>
+          </div>
+          <p>
+            A small setup layer around the open-source
+            <a href="https://github.com/taylorwilsdon/google_workspace_mcp"
+              >Google Workspace MCP server</a
+            >. It handles local configuration; the upstream server supplies the
+            Google tools.
+          </p>
+        </div>
+        <div class="features">
+          <article class="feature">
+            <span class="number">01 — FIND</span>
+            <h3>Work from your files.</h3>
+            <p>
+              Search Drive, list folders, and read existing Google Docs. Give
+              your agent a document link or ask it to find the right file.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="number">02 — WRITE</span>
+            <h3>Keep the work in Docs.</h3>
+            <p>
+              Create documents, revise text, apply formatting, and work with
+              tables and comments through the upstream MCP tools.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="number">03 — SHARE A LOGIN</span>
+            <h3>Use either agent.</h3>
+            <p>
+              Codex and Claude Code point to the same private directory.
+              Authorize Google once, then reuse that grant locally.
+            </p>
+          </article>
+        </div>
+      </section>
+      <section id="setup" class="section setup" aria-labelledby="setup-title">
+        <div>
+          <div class="label">02 / Get connected</div>
+          <h2 id="setup-title">A little setup.<br />Then, just ask.</h2>
+          <p>
+            You’ll need Node.js 24+,
+            <a href="https://docs.astral.sh/uv/getting-started/installation/"
+              >uv</a
+            >, and Codex or Claude Code. Use your own Google Cloud project with
+            the Drive and Docs APIs enabled.
+          </p>
+          <p>Create a Web application OAuth client with this redirect URI:</p>
+          <pre>http://localhost:8769/oauth2callback</pre>
+          <div class="note">
+            <p>
+              <strong>Already connected?</strong> The installer preserves
+              existing connections. See the repository’s migration notes before
+              changing a shared MCP configuration.
+            </p>
+          </div>
+        </div>
+        <ol class="steps">
+          <li>
+            <h3>Get the connector</h3>
+            <pre>
+git clone https://github.com/zohaibarsalan/workspace-connect.git
+cd workspace-connect
+npm ci &amp;&amp; npm run build</pre
+            >
+          </li>
+          <li>
+            <h3>Add your own OAuth client</h3>
+            <p>
+              Download its client JSON from Google Cloud. Import it into private
+              local storage.
+            </p>
+            <pre>
+node dist/cli.js credentials --file ~/Downloads/client.json</pre
+            >
+          </li>
+          <li>
+            <h3>Register your agents</h3>
+            <pre>node dist/cli.js install --client both</pre>
+          </li>
+          <li>
+            <h3>Authorize Google</h3>
+            <p>
+              On macOS, choose your browser. Elsewhere, open the printed Google
+              URL yourself. Restart your agent sessions after installation.
+            </p>
+            <pre>
+node dist/cli.js auth --email you@example.com --browser Zen</pre
+            >
+          </li>
+        </ol>
+      </section>
+      <section class="section setup" aria-labelledby="data-title">
+        <div>
+          <div class="label">03 / Your data</div>
+          <h2 id="data-title">Runs locally.<br />Connects directly.</h2>
+        </div>
+        <div>
+          <p>
+            The connector runs on your computer and calls Google through the
+            upstream MCP server. OAuth credentials stay in your local
+            configuration directory.
+          </p>
+          <p>
+            When an agent reads a document, its contents may be sent to that
+            agent’s AI provider under your account settings and that provider’s
+            terms. This public website never receives your Google login or
+            documents.
+          </p>
+          <p>
+            The connector has no subscription fee. Your AI provider, Google
+            services, storage, and platform usage remain subject to their own
+            pricing and limits. Google OAuth apps kept in Testing require
+            reauthorization about every seven days.
+          </p>
+          <a href="privacy.html">Read the full privacy notice →</a>
+        </div>
+      </section>
+      <div class="end">
+        <div>
+          <h2>Make the document part of the workflow.</h2>
+          <p>
+            Built by Zohaib Arsalan. Independent, open source, and ready to
+            inspect.
+          </p>
+        </div>
+        <a
+          class="button"
+          href="https://github.com/zohaibarsalan/workspace-connect"
+          >Explore the repository <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </main>
+    <footer>
+      <div class="wrap">
+        <span
+          >© 2026 Workspace Connect · Not affiliated with Google, OpenAI, or
+          Anthropic.</span
+        >
+        <div class="links">
+          <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a
+          ><a href="https://github.com/zohaibarsalan/workspace-connect/issues"
+            >Support</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

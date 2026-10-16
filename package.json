@@ -1,0 +1,27 @@
+{
+  "name": "@zohaibarsalan/workspace-connect",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared local Google Drive and Docs access for Codex and Claude Code.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24"
+  },
+  "bin": {
+    "workspace-connect": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "check": "npm test && node scripts/check-site.mjs",
+    "preview": "python3 -m http.server 4173 --directory docs --bind 127.0.0.1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "7.0.2"
+  }
+}

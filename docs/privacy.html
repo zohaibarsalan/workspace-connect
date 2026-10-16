@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="How Workspace Connect handles Google data, local credentials, AI providers, and this website."
+    />
+    <title>Privacy — Workspace Connect</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header>
+      <div class="wrap">
+        <a class="brand" href="./"
+          ><span class="mark" aria-hidden="true"></span>Workspace Connect</a
+        >
+        <nav aria-label="Main navigation">
+          <a href="./#setup">Setup</a
+          ><a href="https://github.com/zohaibarsalan/workspace-connect"
+            >GitHub ↗</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="wrap legal">
+      <div class="eyebrow">Project information</div>
+      <h1>Privacy notice</h1>
+      <p class="updated">Effective October 17, 2026</p>
+      <p>
+        Workspace Connect is an independent, open-source local setup tool
+        maintained by Zohaib Arsalan. It connects Google Drive and Google Docs
+        to MCP-compatible coding agents, including Codex and Claude Code, using
+        the third-party
+        <a href="https://github.com/taylorwilsdon/google_workspace_mcp"
+          >workspace-mcp server</a
+        >.
+      </p>
+      <h2>What the connector accesses</h2>
+      <p>
+        You supply your own Google OAuth client and choose a Google account on
+        Google’s consent screen. The enabled Drive and Docs scopes can permit
+        searching and reading files, creating and editing documents, changing
+        file metadata, and managing sharing or deletion through the tools
+        exposed by the upstream server. Your Google account’s existing access
+        permissions still apply. Review the requested permissions before
+        granting access.
+      </p>
+      <h2>How Google data is used</h2>
+      <p>
+        Google data is used to carry out the work you request through your
+        coding agent. The local connector forwards MCP requests to the upstream
+        server, which communicates with Google’s APIs. Workspace Connect has no
+        hosted service that collects your Google files, no telemetry collector,
+        and no advertising service. The maintainer does not receive your OAuth
+        credentials or document content through this project.
+      </p>
+      <p>
+        Workspace Connect’s use and transfer of information received from Google
+        APIs will follow the
+        <a
+          href="https://developers.google.com/terms/api-services-user-data-policy"
+          >Google API Services User Data Policy</a
+        >, including its Limited Use requirements. The connector does not sell
+        Google data, use it for advertising, or operate a service to train
+        general-purpose AI models on it.
+      </p>
+      <h2>Your coding agent and AI provider</h2>
+      <p>
+        Document contents and tool results returned to Codex, Claude Code, or
+        another agent may be processed, retained, or transmitted by that agent
+        and its AI provider under your selected account settings and their
+        separate terms. Workspace Connect does not control those providers. Read
+        the provider’s data policies before using sensitive documents, and
+        configure the agent’s approval and data controls appropriately.
+      </p>
+      <h2>Local storage and retention</h2>
+      <p>
+        The default configuration directory is
+        <code>~/.config/workspace-connect</code>, unless you choose another
+        directory. OAuth client credentials and access/refresh tokens are stored
+        there by the connector and upstream server. The credential importer
+        creates private directories and restricts the imported client file to
+        owner-only access on systems supporting POSIX permissions. These are
+        local files, not a promise of encrypted storage.
+      </p>
+      <p>
+        Your coding agents may retain their own conversation history, tool
+        results, files, and logs. Google retains documents and related data
+        under your Google account. Those copies follow the respective
+        application’s retention controls.
+      </p>
+      <h2>Disconnecting and deleting data</h2>
+      <p>
+        You can revoke this app’s access from
+        <a href="https://myaccount.google.com/connections"
+          >your Google Account connections</a
+        >, remove the MCP registration from your coding agents, and delete the
+        chosen local credential directory. Revoking access does not delete
+        Google documents, agent history, backups, or copies already retained by
+        an AI provider. Manage those separately in the relevant service. Do not
+        post credentials or private document content in GitHub issues.
+      </p>
+      <h2>This public website</h2>
+      <p>
+        This is a static GitHub Pages website. It has no Google sign-in form,
+        does not request access to your account, and does not receive Google
+        documents. It uses no analytics, tracking scripts, advertising, or
+        project-managed cookies. GitHub may process technical request
+        information under the
+        <a
+          href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
+          >GitHub Privacy Statement</a
+        >. This site uses system fonts and does not load third-party font
+        services.
+      </p>
+      <h2>Contact and updates</h2>
+      <p>
+        For project or privacy questions, use the
+        <a href="https://github.com/zohaibarsalan/workspace-connect/issues"
+          >repository issue tracker</a
+        >
+        without including private data. Changes to this notice will be published
+        here with an updated effective date and retained in the repository’s
+        history.
+      </p>
+      <p><a href="./">← Back to Workspace Connect</a></p>
+    </main>
+    <footer>
+      <div class="wrap">
+        <span>Workspace Connect · Independent open-source software.</span>
+        <div class="links">
+          <a href="privacy.html" aria-current="page">Privacy</a
+          ><a href="terms.html">Terms</a
+          ><a href="https://github.com/zohaibarsalan/workspace-connect"
+            >Source</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
